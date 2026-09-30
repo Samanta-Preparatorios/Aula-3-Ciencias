@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Citologia | Curso Preparatório Professora Samanta</title>
+<style>
+:root{
+  --orange:#f58b1f;
+  --orange-dark:#d76a08;
+  --ink:#151515;
+  --muted:#5d6268;
+  --paper:#fffaf4;
+  --cream:#fff1df;
+  --line:#ead8c2;
+  --green:#2f7d5b;
+  --red:#b84949;
+  --blue:#3f71a8;
+  --shadow:0 12px 34px rgba(37,25,15,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+  color:var(--ink);
+  background:linear-gradient(180deg,#f7f1ea 0,#fff 420px,#fff 100%);
+  line-height:1.55;
+}
+.container{max-width:1120px;margin:auto;padding:0 22px}
+header{
+  background:#131313;
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+header:after{
+  content:"";position:absolute;inset:auto -80px -110px auto;width:360px;height:360px;border-radius:50%;
+  background:radial-gradient(circle,rgba(245,139,31,.28),transparent 68%);
+}
+.topbar{display:flex;align-items:center;gap:24px;padding:18px 0;position:relative;z-index:1}
+.logo-wrap{display:flex;align-items:center;min-width:290px}
+.logo-img{height:86px;width:auto;display:block;border-radius:6px;background:#111;object-fit:contain}
+.logo-fallback{display:none;align-items:center;gap:10px}
+.logo-fallback svg{width:270px;height:auto}
+.breadcrumb{margin-left:auto;text-align:right;font-size:.88rem;color:#ddd}
+.hero{padding:34px 0 48px;position:relative;z-index:1}
+.kicker{display:inline-flex;gap:8px;align-items:center;background:rgba(245,139,31,.14);border:1px solid rgba(245,139,31,.34);padding:7px 11px;border-radius:999px;color:#ffd6a6;font-weight:700;font-size:.82rem;letter-spacing:.02em}
+.hero h1{font-size:clamp(2rem,5vw,3.8rem);line-height:1.02;margin:18px 0 12px;max-width:780px}
+.hero p{max-width:850px;color:#dedede;font-size:1.05rem;margin:0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px}
+.stat{background:#201e1b;border:1px solid #3a342e;border-radius:15px;padding:14px}
+.stat strong{display:block;color:#fff;font-size:1.45rem}.stat span{font-size:.78rem;color:#c5c0ba}
+main{padding:26px 0 70px}
+.section{margin:22px 0 30px}
+.section-head{display:flex;gap:14px;align-items:flex-end;justify-content:space-between;margin-bottom:18px}
+.section-head h2{margin:0;font-size:1.8rem}.section-head p{margin:0;color:var(--muted)}
+.card{background:white;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:22px}
+.grid-2{display:grid;grid-template-columns:1.08fr .92fr;gap:18px}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.callout{background:linear-gradient(135deg,#fff6e9,#fff);border-left:5px solid var(--orange);padding:15px 18px;border-radius:12px}
+.tag{display:inline-flex;align-items:center;gap:7px;font-size:.78rem;font-weight:800;color:var(--orange-dark);background:#fff1df;border:1px solid #f1d2a8;border-radius:999px;padding:6px 9px}
+.toc{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0 24px}
+.toc a{text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px;font-weight:700;display:flex;align-items:center;gap:8px;transition:.2s}.toc a:hover{transform:translateY(-2px);border-color:#efb067}
+.topic{scroll-margin-top:20px;margin:28px 0}.topic-title{display:flex;align-items:center;gap:10px;margin-bottom:14px}.topic-title h3{margin:0;font-size:1.45rem}
+.topic-no{background:var(--orange);color:#fff;border-radius:10px;padding:5px 9px;font-weight:900;font-size:.86rem}
+ul.clean{padding-left:20px;margin:10px 0}.clean li{margin:7px 0}
+.mini-table{width:100%;border-collapse:collapse;font-size:.95rem}.mini-table th,.mini-table td{padding:10px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.mini-table th{background:#fff6e9}
+.pill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}.pill{border:1px solid var(--line);border-radius:14px;padding:11px;background:#fffdf9}.pill b{display:block}.muted{color:var(--muted)}
+/* SVG/visuals */
+.visual{background:#fbfbfb;border:1px solid #ececec;border-radius:18px;padding:12px;overflow:hidden}
+.visual-caption{text-align:center;color:var(--muted);font-size:.82rem;margin-top:7px}
+.biomolecules{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.molecule{border:1px solid var(--line);padding:13px;border-radius:14px;background:#fff}.molecule .ico{font-size:1.55rem;margin-bottom:5px}.molecule strong{font-size:.95rem;display:block}.molecule small{color:var(--muted)}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;align-items:center}.step{padding:11px;border-radius:14px;background:#fff;border:1px solid var(--line);text-align:center;font-weight:700}.arrow{text-align:center;color:var(--orange-dark);font-size:1.4rem}
+.compare{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border:1px solid var(--line);border-radius:15px}.compare th,.compare td{padding:12px;border-bottom:1px solid var(--line);text-align:left}.compare tr:last-child td{border-bottom:0}.compare th{background:#fff1df}
+/* Quiz */
+.quiz-shell{background:#141414;color:#fff;border-radius:24px;padding:22px;box-shadow:var(--shadow)}
+.quiz-meta{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.quiz-meta p{margin:0;color:#cacaca}
+.q{background:#1d1d1d;border:1px solid #323232;border-radius:18px;padding:17px;margin:13px 0}.q-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.q h4{margin:0 0 9px;font-size:1rem;line-height:1.4}.level{font-size:.72rem;font-weight:800;border-radius:999px;padding:5px 8px;white-space:nowrap}.facil{background:#233d30;color:#bdebd1}.medio{background:#403419;color:#ffe7a8}.dificil{background:#492c2c;color:#ffb8b8}
+.options{display:grid;gap:8px}.options label{display:flex;gap:10px;align-items:flex-start;padding:10px;border:1px solid #383838;border-radius:12px;cursor:pointer;transition:.15s}.options label:hover{background:#242424;border-color:#4a4a4a}.options input{margin-top:4px;accent-color:var(--orange)}
+.quiz-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.btn{border:0;border-radius:12px;padding:12px 16px;font-weight:800;cursor:pointer}.btn-primary{background:var(--orange);color:#111}.btn-secondary{background:#2b2b2b;color:#fff;border:1px solid #464646}.btn-print{background:white;color:#111}
+.result{display:none;margin-top:18px;background:#fff;color:var(--ink);border-radius:20px;padding:20px}
+.dashboard{display:grid;grid-template-columns:270px 1fr;gap:18px;align-items:start}.chart-card{display:flex;flex-direction:column;align-items:center;gap:12px}.pie{width:190px;height:190px;border-radius:50%;background:conic-gradient(#d9d9d9 0 100%);position:relative;display:grid;place-items:center}.pie:after{content:"";width:116px;height:116px;border-radius:50%;background:#fff;position:absolute}.pie span{position:relative;z-index:1;font-size:1.7rem;font-weight:900}.legend{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;font-size:.84rem}.legend span{display:flex;align-items:center;gap:6px}.dot{width:10px;height:10px;border-radius:50%;display:inline-block}.green{background:var(--green)}.red{background:var(--red)}
+.topic-score{border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:9px}.topic-line{display:flex;justify-content:space-between;gap:12px;font-weight:800}.bar{height:10px;background:#eee;border-radius:999px;overflow:hidden;margin-top:8px}.bar > div{height:100%;width:0;background:var(--orange);transition:width .4s}
+.analysis-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:15px}.analysis-card{border:1px solid var(--line);border-radius:16px;padding:15px}.analysis-card h4{margin:0 0 8px}.study-list{margin:8px 0 0;padding-left:18px}.study-list li{margin:7px 0}
+.comments{display:none;margin-top:18px}.comment{border:1px solid var(--line);border-radius:15px;padding:13px;margin:9px 0;background:#fffdf9}.comment strong{color:var(--orange-dark)}
+.score-ok{color:var(--green)}.score-bad{color:var(--red)}
+footer{background:#151515;color:#e8e8e8;padding:28px 0 32px}.footer-grid{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}.footer-grid p{margin:4px 0;color:#c9c9c9}.footer-links{display:flex;gap:10px;flex-wrap:wrap}.footer-link{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:#fff;border:1px solid #454545;padding:10px 13px;border-radius:12px}.footer-link:hover{border-color:var(--orange)}
+.note{font-size:.82rem;color:var(--muted)}
+@media(max-width:900px){.grid-2,.dashboard{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr 1fr}.stats,.toc{grid-template-columns:1fr 1fr}.biomolecules{grid-template-columns:1fr 1fr}.flow{grid-template-columns:1fr 1fr}.arrow{transform:rotate(90deg)}}
+@media(max-width:620px){.container{padding:0 14px}.topbar{align-items:flex-start}.breadcrumb{display:none}.logo-img{height:65px}.hero{padding-top:24px}.stats,.toc,.grid-3,.biomolecules,.flow,.analysis-grid{grid-template-columns:1fr}.stats .stat{display:flex;justify-content:space-between;align-items:center}.footer-grid{grid-template-columns:1fr}.dashboard{grid-template-columns:1fr}}
+@media print{
+  body{background:#fff;color:#111}.topbar,.hero{break-inside:avoid}.quiz-shell{color:#111;background:#fff;border:1px solid #ddd}.q{background:#fff;color:#111;border:1px solid #ccc}.options label{border:1px solid #ccc}.btn,.quiz-actions{display:none}.result{display:block !important}.comments{display:block !important}.topic{break-inside:avoid}.card,.quiz-shell{box-shadow:none}.no-print{display:none!important}footer{background:#fff;color:#111;border-top:1px solid #ddd}footer p,.footer-link{color:#333}.footer-link{border-color:#bbb}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="topbar">
+      <div class="logo-wrap">
+        <img class="logo-img" src="https://samanta-preparatorios.github.io/Aula-2-Ciencias/Logo%20preparatorio1.jpeg" alt="Logo Curso Preparatório Professora Samanta" onerror="this.style.display='none';document.getElementById('logoFallback').style.display='flex';">
+        <div id="logoFallback" class="logo-fallback" aria-label="Professora Samanta Cursos Preparatórios">
+          <svg viewBox="0 0 690 180" role="img">
+            <rect width="690" height="180" rx="10" fill="#121212"/>
+            <circle cx="88" cy="90" r="59" fill="none" stroke="#f58b1f" stroke-width="10"/>
+            <text x="42" y="119" font-size="90" font-family="Arial, sans-serif" font-weight="900" fill="#f58b1f">S</text>
+            <rect x="178" y="24" width="288" height="34" rx="4" fill="#f58b1f"/>
+            <text x="194" y="48" font-size="18" font-family="Arial, sans-serif" letter-spacing="6" fill="#111">PROFESSORA</text>
+            <text x="175" y="118" font-size="74" font-family="Arial, sans-serif" font-weight="800" fill="#fff">Samanta</text>
+            <rect x="178" y="136" width="288" height="24" rx="3" fill="#f58b1f"/>
+            <text x="198" y="154" font-size="13" font-family="Arial, sans-serif" letter-spacing="3" fill="#111">CURSOS PREPARATÓRIOS</text>
+          </svg>
+        </div>
+      </div>
+      <div class="breadcrumb">Ciências da Natureza<br><strong>Conteúdo Programático · 3. Citologia</strong></div>
+    </div>
+    <div class="hero">
+      <span class="kicker">🧫 MATERIAL DE ESTUDO + QUESTIONÁRIO DIAGNÓSTICO</span>
+      <h1>Citologia: química celular, envoltórios, organelas e divisão celular</h1>
+      <p>Revisão objetiva dos conceitos essenciais, apoio visual para fixação e 12 questões em três níveis de dificuldade. Ao final, o diagnóstico calcula o percentual de acertos, identifica os temas de maior facilidade e dificuldade e gera uma orientação de estudo personalizada.</p>
+      <div class="stats">
+        <div class="stat"><strong>4</strong><span>conteúdos</span></div>
+        <div class="stat"><strong>12</strong><span>questões</span></div>
+        <div class="stat"><strong>3</strong><span>níveis</span></div>
+        <div class="stat"><strong>1</strong><span>diagnóstico final</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="container">
+  <div class="toc">
+    <a href="#bioquimica">🧪 3.1 Bioquímica celular</a>
+    <a href="#envoltorios">🧱 3.2 Envoltórios</a>
+    <a href="#organelas">⚙️ 3.3 Organelas</a>
+    <a href="#divisao">🧬 3.4 Divisão celular</a>
+  </div>
+
+  <section class="section">
+    <div class="section-head"><div><h2>PARTE 1 · Revisão dos conteúdos</h2><p>Leia esta síntese antes de iniciar o questionário.</p></div><span class="tag">Foco em conceitos essenciais</span></div>
+
+    <article class="topic card" id="bioquimica">
+      <div class="topic-title"><span class="topic-no">3.1</span><h3>Bioquímica celular · compostos inorgânicos e orgânicos</h3></div>
+      <div class="grid-2">
+        <div>
+          <p><strong>Compostos inorgânicos</strong> participam de muitas funções básicas da célula. Entre os mais importantes estão a água e os sais minerais.</p>
+          <ul class="clean">
+            <li><strong>Água:</strong> atua como solvente, participa de reações químicas e contribui para a regulação da temperatura.</li>
+            <li><strong>Sais minerais:</strong> podem atuar no equilíbrio osmótico, no controle de impulsos nervosos e na formação de estruturas, entre outras funções.</li>
+            <li><strong>Carboidratos:</strong> fonte energética imediata e, em alguns organismos, também estruturais.</li>
+            <li><strong>Lipídios:</strong> reserva energética, composição das membranas e participação em processos de sinalização.</li>
+            <li><strong>Proteínas:</strong> formadas por aminoácidos e envolvidas em transporte, defesa, estrutura e catálise enzimática.</li>
+            <li><strong>Ácidos nucleicos:</strong> DNA e RNA, relacionados ao armazenamento, transmissão e expressão das informações genéticas.</li>
+          </ul>
+        </div>
+        <div class="card" style="box-shadow:none;background:#fffaf4">
+          <div class="biomolecules">
+            <div class="molecule"><div class="ico">💧</div><strong>Água</strong><small>solvente e termorregulação</small></div>
+            <div class="molecule"><div class="ico">🧂</div><strong>Sais minerais</strong><small>equilíbrio e funções específicas</small></div>
+            <div class="molecule"><div class="ico">🍞</div><strong>Carboidratos</strong><small>energia e estruturas</small></div>
+            <div class="molecule"><div class="ico">🫒</div><strong>Lipídios</strong><small>membranas e reserva</small></div>
+            <div class="molecule"><div class="ico">🥚</div><strong>Proteínas</strong><small>enzimas e estrutura</small></div>
+            <div class="molecule"><div class="ico">🧬</div><strong>DNA e RNA</strong><small>informação genética</small></div>
+            <div class="molecule"><div class="ico">⚡</div><strong>ATP</strong><small>transferência de energia celular</small></div>
+            <div class="molecule"><div class="ico">🔗</div><strong>Enzimas</strong><small>catalisadores biológicos</small></div>
+          </div>
+        </div>
+      </div>
+      <table class="mini-table" style="margin-top:16px">
+        <thead><tr><th>Classe</th><th>Exemplos</th><th>Ideia-chave</th></tr></thead>
+        <tbody>
+          <tr><td>Inorgânicos</td><td>Água e sais minerais</td><td>Funções estruturais, reguladoras e químicas.</td></tr>
+          <tr><td>Carboidratos</td><td>Glicose, amido, celulose</td><td>Energia e, em alguns casos, sustentação.</td></tr>
+          <tr><td>Lipídios</td><td>Triglicerídeos, fosfolipídios</td><td>Reserva energética e membranas.</td></tr>
+          <tr><td>Proteínas</td><td>Enzimas, anticorpos</td><td>Estrutura e execução de diversas funções celulares.</td></tr>
+          <tr><td>Ácidos nucleicos</td><td>DNA, RNA</td><td>Informação genética e síntese de proteínas.</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article class="topic card" id="envoltorios">
+      <div class="topic-title"><span class="topic-no">3.2</span><h3>Envoltórios celulares · estrutura e funções</h3></div>
+      <div class="grid-2">
+        <div>
+          <p><strong>Membrana plasmática:</strong> delimita a célula e controla a entrada e a saída de substâncias. Seu modelo é descrito como um <strong>mosaico fluido</strong>, formado principalmente por uma bicamada de fosfolipídios com proteínas associadas.</p>
+          <p><strong>Transporte passivo:</strong> ocorre sem gasto direto de ATP e acompanha o gradiente de concentração, como na difusão e na osmose.</p>
+          <p><strong>Transporte ativo:</strong> utiliza energia e pode mover substâncias contra o gradiente de concentração.</p>
+          <p><strong>Parede celular:</strong> estrutura externa à membrana, presente em plantas, fungos e bactérias, com composição diferente em cada grupo. Na célula vegetal, a parede é rica em celulose.</p>
+        </div>
+        <div class="visual">
+          <svg viewBox="0 0 620 310" width="100%" height="auto" role="img" aria-label="Esquema simplificado de membrana plasmática">
+            <rect x="0" y="0" width="620" height="310" rx="18" fill="#f8fbfd"/>
+            <text x="22" y="32" font-family="Arial" font-size="20" font-weight="700" fill="#151515">Bicamada de fosfolipídios</text>
+            <g stroke="#3f71a8" stroke-width="3" fill="#dbeaf7">
+              <circle cx="70" cy="84" r="11"/><circle cx="116" cy="84" r="11"/><circle cx="162" cy="84" r="11"/><circle cx="208" cy="84" r="11"/><circle cx="254" cy="84" r="11"/><circle cx="300" cy="84" r="11"/><circle cx="346" cy="84" r="11"/><circle cx="392" cy="84" r="11"/><circle cx="438" cy="84" r="11"/><circle cx="484" cy="84" r="11"/><circle cx="530" cy="84" r="11"/>
+              <circle cx="70" cy="226" r="11"/><circle cx="116" cy="226" r="11"/><circle cx="162" cy="226" r="11"/><circle cx="208" cy="226" r="11"/><circle cx="254" cy="226" r="11"/><circle cx="300" cy="226" r="11"/><circle cx="346" cy="226" r="11"/><circle cx="392" cy="226" r="11"/><circle cx="438" cy="226" r="11"/><circle cx="484" cy="226" r="11"/><circle cx="530" cy="226" r="11"/>
+            </g>
+            <g stroke="#3f71a8" stroke-width="4"><path d="M70 96l-7 38M70 96l7 38M116 96l-7 38M116 96l7 38M162 96l-7 38M162 96l7 38M208 96l-7 38M208 96l7 38M254 96l-7 38M254 96l7 38M300 96l-7 38M300 96l7 38M346 96l-7 38M346 96l7 38M392 96l-7 38M392 96l7 38M438 96l-7 38M438 96l7 38M484 96l-7 38M484 96l7 38M530 96l-7 38M530 96l7 38"/></g>
+            <g stroke="#3f71a8" stroke-width="4"><path d="M70 214l-7-38M70 214l7-38M116 214l-7-38M116 214l7-38M162 214l-7-38M162 214l7-38M208 214l-7-38M208 214l7-38M254 214l-7-38M254 214l7-38M300 214l-7-38M300 214l7-38M346 214l-7-38M346 214l7-38M392 214l-7-38M392 214l7-38M438 214l-7-38M438 214l7-38M484 214l-7-38M484 214l7-38M530 214l-7-38M530 214l7-38"/></g>
+            <rect x="250" y="122" width="75" height="66" rx="16" fill="#f58b1f" stroke="#a85500" stroke-width="3"/><text x="265" y="160" font-family="Arial" font-size="17" font-weight="700" fill="#111">proteína</text>
+            <text x="25" y="280" font-family="Arial" font-size="16" fill="#555">Cabeças hidrofílicas • caudas hidrofóbicas • proteínas</text>
+          </svg>
+          <div class="visual-caption">Esquema didático: a membrana combina lipídios e proteínas em uma estrutura dinâmica.</div>
+        </div>
+      </div>
+      <div class="pill-grid">
+        <div class="pill"><b>Difusão</b><span class="muted">movimento espontâneo do soluto do maior para o menor gradiente.</span></div>
+        <div class="pill"><b>Osmose</b><span class="muted">movimento de água através de uma membrana semipermeável.</span></div>
+        <div class="pill"><b>Transporte ativo</b><span class="muted">há gasto de energia para transportar contra o gradiente.</span></div>
+        <div class="pill"><b>Endocitose e exocitose</b><span class="muted">entrada e saída de materiais por vesículas.</span></div>
+      </div>
+    </article>
+
+    <article class="topic card" id="organelas">
+      <div class="topic-title"><span class="topic-no">3.3</span><h3>Organelas celulares · estrutura e funções</h3></div>
+      <div class="grid-2">
+        <div class="visual">
+          <svg viewBox="0 0 640 390" width="100%" height="auto" role="img" aria-label="Infográfico simplificado de uma célula eucarionte">
+            <rect x="0" y="0" width="640" height="390" rx="18" fill="#fbfbfb"/>
+            <ellipse cx="315" cy="200" rx="238" ry="138" fill="#fff3e4" stroke="#d8a45d" stroke-width="5"/>
+            <circle cx="305" cy="190" r="63" fill="#e5effa" stroke="#3f71a8" stroke-width="4"/>
+            <circle cx="286" cy="168" r="12" fill="#3f71a8"/><text x="265" y="200" font-family="Arial" font-size="18" fill="#26405b">núcleo</text>
+            <g fill="#f58b1f" stroke="#9a5500" stroke-width="2">
+              <ellipse cx="205" cy="120" rx="34" ry="14"/><ellipse cx="420" cy="135" rx="34" ry="14"/><ellipse cx="180" cy="255" rx="34" ry="14"/>
+            </g>
+            <g fill="none" stroke="#fff" stroke-width="5"><path d="M183 120q22-16 44 0t44 0"/><path d="M398 135q22-16 44 0t44 0"/><path d="M158 255q22-16 44 0t44 0"/></g>
+            <g stroke="#8c5a22" stroke-width="4" fill="none"><path d="M356 230c30-38 55-40 78-6c22 32 8 51-26 47c-33-4-51-20-52-41z"/></g>
+            <text x="409" y="286" font-family="Arial" font-size="17" fill="#6e4920">complexo de Golgi</text>
+            <g fill="#bfe3cc" stroke="#2f7d5b" stroke-width="3"><circle cx="445" cy="219" r="9"/><circle cx="474" cy="235" r="7"/><circle cx="140" cy="175" r="8"/><circle cx="483" cy="190" r="7"/></g>
+            <text x="86" y="55" font-family="Arial" font-size="20" font-weight="700">Célula eucarionte (esquema)</text>
+            <text x="88" y="348" font-family="Arial" font-size="15" fill="#555">Membrana • núcleo • mitocôndrias • Golgi • ribossomos</text>
+          </svg>
+          <div class="visual-caption">As formas estão simplificadas para destacar relações entre estruturas e funções.</div>
+        </div>
+        <div>
+          <table class="mini-table">
+            <thead><tr><th>Estrutura</th><th>Função principal</th></tr></thead>
+            <tbody>
+              <tr><td>Núcleo</td><td>Armazena o DNA e participa do controle da atividade celular.</td></tr>
+              <tr><td>Ribossomos</td><td>Realizam a síntese de proteínas.</td></tr>
+              <tr><td>Mitocôndrias</td><td>Relacionadas à respiração celular e à produção de ATP.</td></tr>
+              <tr><td>Retículo endoplasmático rugoso</td><td>Produção e processamento inicial de proteínas destinadas a certas rotas celulares.</td></tr>
+              <tr><td>Retículo endoplasmático liso</td><td>Síntese de lipídios e outras funções metabólicas.</td></tr>
+              <tr><td>Complexo de Golgi</td><td>Modifica, organiza e direciona moléculas em vesículas.</td></tr>
+              <tr><td>Lisossomos</td><td>Digestão intracelular e reciclagem de componentes.</td></tr>
+              <tr><td>Cloroplastos</td><td>Fotossíntese em células vegetais e de algas.</td></tr>
+              <tr><td>Vacúolo</td><td>Armazenamento e, em células vegetais, manutenção da turgidez.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:14px"><strong>Dica de prova:</strong> pense em "rota de uma proteína" como uma sequência: ribossomo → retículo endoplasmático rugoso → vesículas → complexo de Golgi → destino celular.</div>
+    </article>
+
+    <article class="topic card" id="divisao">
+      <div class="topic-title"><span class="topic-no">3.4</span><h3>Divisão celular · mitose e meiose</h3></div>
+      <div class="grid-2">
+        <div>
+          <p><strong>Mitose</strong> é uma divisão celular relacionada ao crescimento, à renovação e à reposição de células. Em uma célula diploide, o processo gera, em condições usuais, <strong>duas células-filhas</strong> com o mesmo número de cromossomos da célula inicial.</p>
+          <p><strong>Meiose</strong> envolve duas divisões consecutivas e reduz o número de cromossomos. Ao final, uma célula diploide origina, em termos gerais, <strong>quatro células haploides</strong>, com combinações genéticas diferentes.</p>
+          <p><strong>Variabilidade genética:</strong> na meiose, o crossing-over e a distribuição independente dos cromossomos contribuem para novas combinações genéticas.</p>
+        </div>
+        <div class="visual">
+          <svg viewBox="0 0 640 390" width="100%" height="auto" role="img" aria-label="Comparação entre mitose e meiose">
+            <rect x="0" y="0" width="640" height="390" rx="18" fill="#fbfbfb"/>
+            <text x="54" y="38" font-family="Arial" font-size="22" font-weight="700" fill="#151515">Mitose</text>
+            <text x="352" y="38" font-family="Arial" font-size="22" font-weight="700" fill="#151515">Meiose</text>
+            <g fill="#fff3e4" stroke="#d8a45d" stroke-width="3"><circle cx="120" cy="110" r="42"/><circle cx="470" cy="110" r="42"/></g>
+            <g stroke="#f58b1f" stroke-width="7"><path d="M105 95l30 30M135 95l-30 30"/></g>
+            <g stroke="#3f71a8" stroke-width="6"><path d="M455 95l30 30M485 95l-30 30"/><path d="M447 108l45-14" stroke="#b84949" stroke-width="3"/></g>
+            <g stroke="#777" stroke-width="3" fill="none"><path d="M162 110h75"/><path d="M512 110h60"/></g>
+            <polygon points="229,103 243,110 229,117" fill="#777"/><polygon points="572,103 586,110 572,117" fill="#777"/>
+            <g fill="#eaf4ee" stroke="#2f7d5b" stroke-width="3"><circle cx="255" cy="190" r="34"/><circle cx="365" cy="190" r="34"/></g>
+            <g fill="#fff3e4" stroke="#d8a45d" stroke-width="3"><circle cx="420" cy="190" r="34"/><circle cx="490" cy="190" r="34"/><circle cx="280" cy="285" r="34"/><circle cx="350" cy="285" r="34"/><circle cx="420" cy="285" r="34"/><circle cx="490" cy="285" r="34"/></g>
+            <text x="222" y="197" font-family="Arial" font-size="14" font-weight="700">2 células</text>
+            <text x="444" y="197" font-family="Arial" font-size="14" font-weight="700">2ª divisão</text>
+            <text x="261" y="344" font-family="Arial" font-size="14" font-weight="700">4 células</text>
+            <text x="52" y="368" font-family="Arial" font-size="14" fill="#555">Mesma ploidia inicial → crescimento/renovação</text>
+            <text x="350" y="368" font-family="Arial" font-size="14" fill="#555">Redução cromossômica → variabilidade</text>
+          </svg>
+          <div class="visual-caption">Esquema conceitual: o ponto central é comparar resultado, ploidia e variabilidade.</div>
+        </div>
+      </div>
+      <table class="compare" style="margin-top:16px">
+        <thead><tr><th>Aspecto</th><th>Mitose</th><th>Meiose</th></tr></thead>
+        <tbody>
+          <tr><td>Número de divisões</td><td>1</td><td>2</td></tr>
+          <tr><td>Células resultantes</td><td>Geralmente 2</td><td>Geralmente 4</td></tr>
+          <tr><td>Número de cromossomos</td><td>Conservado em relação à célula inicial</td><td>Reduzido à metade na formação de células haploides</td></tr>
+          <tr><td>Variabilidade</td><td>Não é o objetivo principal</td><td>É favorecida por recombinação e distribuição independente</td></tr>
+          <tr><td>Função típica</td><td>Crescimento e renovação</td><td>Formação de células relacionadas à reprodução sexuada</td></tr>
+        </tbody>
+      </table>
+    </article>
+  </section>
+
+  <section class="section" id="questionario">
+    <div class="section-head"><div><h2>PARTE 2 · Questionário diagnóstico</h2><p>12 questões: 3 de cada conteúdo, com uma fácil, uma média e uma difícil.</p></div><span class="tag">Marque uma alternativa por questão</span></div>
+    <div class="quiz-shell">
+      <div class="quiz-meta"><p id="answeredCount">0 de 12 respondidas</p><p>Depois de responder, clique em <strong>Corrigir questionário</strong>.</p></div>
+      <form id="quizForm">
+        <div class="q" data-topic="bioquimica" data-answer="B" data-level="Fácil"><div class="q-head"><h4>1. Qual das alternativas apresenta apenas compostos inorgânicos importantes para a célula?</h4><span class="level facil">FÁCIL</span></div><div class="options">
+          <label><input type="radio" name="q1" value="A">A) Glicose e amido</label>
+          <label><input type="radio" name="q1" value="B">B) Água e sais minerais</label>
+          <label><input type="radio" name="q1" value="C">C) Proteínas e lipídios</label>
+          <label><input type="radio" name="q1" value="D">D) DNA e RNA</label>
+        </div></div>
+
+        <div class="q" data-topic="bioquimica" data-answer="C" data-level="Média"><div class="q-head"><h4>2. Uma molécula que exerce função estrutural na membrana plasmática e possui uma região hidrofílica e outra hidrofóbica é o:</h4><span class="level medio">MÉDIA</span></div><div class="options">
+          <label><input type="radio" name="q2" value="A">A) monossacarídeo</label>
+          <label><input type="radio" name="q2" value="B">B) aminoácido</label>
+          <label><input type="radio" name="q2" value="C">C) fosfolipídio</label>
+          <label><input type="radio" name="q2" value="D">D) nucleotídeo</label>
+        </div></div>
+
+        <div class="q" data-topic="bioquimica" data-answer="A" data-level="Difícil"><div class="q-head"><h4>3. Uma célula passa a produzir uma enzima em grande quantidade. Qual afirmação explica melhor a função da proteína produzida?</h4><span class="level dificil">DIFÍCIL</span></div><div class="options">
+          <label><input type="radio" name="q3" value="A">A) A enzima pode acelerar uma reação química ao reduzir a energia de ativação.</label>
+          <label><input type="radio" name="q3" value="B">B) A enzima armazena a informação genética no lugar do DNA.</label>
+          <label><input type="radio" name="q3" value="C">C) A enzima substitui a membrana plasmática como barreira seletiva.</label>
+          <label><input type="radio" name="q3" value="D">D) A enzima transforma qualquer reação em uma reação espontânea.</label>
+        </div></div>
+
+        <div class="q" data-topic="envoltorios" data-answer="A" data-level="Fácil"><div class="q-head"><h4>4. A principal função da membrana plasmática é:</h4><span class="level facil">FÁCIL</span></div><div class="options">
+          <label><input type="radio" name="q4" value="A">A) controlar seletivamente a entrada e a saída de substâncias.</label>
+          <label><input type="radio" name="q4" value="B">B) produzir diretamente todas as proteínas da célula.</label>
+          <label><input type="radio" name="q4" value="C">C) realizar a fotossíntese em qualquer tipo de célula.</label>
+          <label><input type="radio" name="q4" value="D">D) armazenar todo o material genético da célula.</label>
+        </div></div>
+
+        <div class="q" data-topic="envoltorios" data-answer="D" data-level="Média"><div class="q-head"><h4>5. Uma célula animal é colocada em uma solução hipotônica. A tendência é que:</h4><span class="level medio">MÉDIA</span></div><div class="options">
+          <label><input type="radio" name="q5" value="A">A) a água saia da célula por osmose.</label>
+          <label><input type="radio" name="q5" value="B">B) não ocorra movimento de água.</label>
+          <label><input type="radio" name="q5" value="C">C) os solutos saiam da célula somente com gasto de ATP.</label>
+          <label><input type="radio" name="q5" value="D">D) a água entre na célula por osmose, podendo causar seu inchaço.</label>
+        </div></div>
+
+        <div class="q" data-topic="envoltorios" data-answer="B" data-level="Difícil"><div class="q-head"><h4>6. Uma proteína de membrana transporta íons do meio menos concentrado para o mais concentrado. Esse processo caracteriza:</h4><span class="level dificil">DIFÍCIL</span></div><div class="options">
+          <label><input type="radio" name="q6" value="A">A) difusão simples, sem gasto energético.</label>
+          <label><input type="radio" name="q6" value="B">B) transporte ativo, com gasto de energia.</label>
+          <label><input type="radio" name="q6" value="C">C) osmose, porque íons são sempre água em movimento.</label>
+          <label><input type="radio" name="q6" value="D">D) difusão facilitada, obrigatoriamente contra o gradiente.</label>
+        </div></div>
+
+        <div class="q" data-topic="organelas" data-answer="C" data-level="Fácil"><div class="q-head"><h4>7. A organela diretamente associada à maior parte da produção de ATP durante a respiração celular é a:</h4><span class="level facil">FÁCIL</span></div><div class="options">
+          <label><input type="radio" name="q7" value="A">A) lisossomo</label>
+          <label><input type="radio" name="q7" value="B">B) aparelho de Golgi</label>
+          <label><input type="radio" name="q7" value="C">C) mitocôndria</label>
+          <label><input type="radio" name="q7" value="D">D) centríolo</label>
+        </div></div>
+
+        <div class="q" data-topic="organelas" data-answer="B" data-level="Média"><div class="q-head"><h4>8. Uma proteína destinada à secreção para fora da célula costuma seguir qual sequência?</h4><span class="level medio">MÉDIA</span></div><div class="options">
+          <label><input type="radio" name="q8" value="A">A) lisossomo → núcleo → mitocôndria</label>
+          <label><input type="radio" name="q8" value="B">B) ribossomo → retículo endoplasmático rugoso → complexo de Golgi</label>
+          <label><input type="radio" name="q8" value="C">C) cloroplasto → lisossomo → núcleo</label>
+          <label><input type="radio" name="q8" value="D">D) núcleo → vacúolo → centríolo</label>
+        </div></div>
+
+        <div class="q" data-topic="organelas" data-answer="D" data-level="Difícil"><div class="q-head"><h4>9. Uma célula animal perde a capacidade de modificar e direcionar corretamente proteínas que serão enviadas em vesículas. A estrutura mais diretamente afetada é o:</h4><span class="level dificil">DIFÍCIL</span></div><div class="options">
+          <label><input type="radio" name="q9" value="A">A) nucléolo</label>
+          <label><input type="radio" name="q9" value="B">B) ribossomo</label>
+          <label><input type="radio" name="q9" value="C">C) centríolo</label>
+          <label><input type="radio" name="q9" value="D">D) complexo de Golgi</label>
+        </div></div>
+
+        <div class="q" data-topic="divisao" data-answer="A" data-level="Fácil"><div class="q-head"><h4>10. Em uma célula diploide, a mitose normalmente produz:</h4><span class="level facil">FÁCIL</span></div><div class="options">
+          <label><input type="radio" name="q10" value="A">A) duas células-filhas com o mesmo número de cromossomos da célula inicial.</label>
+          <label><input type="radio" name="q10" value="B">B) quatro células-filhas com metade dos cromossomos.</label>
+          <label><input type="radio" name="q10" value="C">C) uma única célula com o dobro de cromossomos.</label>
+          <label><input type="radio" name="q10" value="D">D) duas células com cromossomos sempre diferentes entre si.</label>
+        </div></div>
+
+        <div class="q" data-topic="divisao" data-answer="C" data-level="Média"><div class="q-head"><h4>11. O crossing-over, associado à recombinação genética, ocorre durante:</h4><span class="level medio">MÉDIA</span></div><div class="options">
+          <label><input type="radio" name="q11" value="A">A) a prófase da mitose, como evento obrigatório.</label>
+          <label><input type="radio" name="q11" value="B">B) a metáfase II da meiose.</label>
+          <label><input type="radio" name="q11" value="C">C) a prófase I da meiose.</label>
+          <label><input type="radio" name="q11" value="D">D) a telófase da mitose.</label>
+        </div></div>
+
+        <div class="q" data-topic="divisao" data-answer="B" data-level="Difícil"><div class="q-head"><h4>12. Qual relação entre meiose e variabilidade genética está correta?</h4><span class="level dificil">DIFÍCIL</span></div><div class="options">
+          <label><input type="radio" name="q12" value="A">A) A meiose produz células geneticamente idênticas porque mantém as combinações cromossômicas.</label>
+          <label><input type="radio" name="q12" value="B">B) A recombinação e a distribuição independente dos cromossomos podem gerar novas combinações genéticas.</label>
+          <label><input type="radio" name="q12" value="C">C) A variabilidade surge porque a meiose duplica o número de cromossomos em cada célula.</label>
+          <label><input type="radio" name="q12" value="D">D) A variabilidade depende apenas de mutações, sem contribuição da meiose.</label>
+        </div></div>
+      </form>
+      <div class="quiz-actions">
+        <button class="btn btn-primary" id="gradeBtn" type="button">Corrigir questionário</button>
+        <button class="btn btn-secondary" id="resetBtn" type="button">Limpar respostas</button>
+        <button class="btn btn-print" id="printBtn" type="button">Imprimir / salvar em PDF</button>
+      </div>
+      <div class="result" id="result">
+        <div class="dashboard">
+          <div class="chart-card card" style="box-shadow:none">
+            <div class="tag">DESEMPENHO GERAL</div>
+            <div class="pie" id="pie"><span id="pieText">0%</span></div>
+            <div class="legend"><span><i class="dot green"></i>Acertos</span><span><i class="dot red"></i>Erros</span></div>
+          </div>
+          <div>
+            <h3 style="margin-top:0">Diagnóstico por conteúdo</h3>
+            <div id="topicScores"></div>
+            <div class="analysis-grid">
+              <div class="analysis-card"><h4 class="score-ok">✓ Maior facilidade</h4><div id="easyTopic">—</div></div>
+              <div class="analysis-card"><h4 class="score-bad">⚠ Maior dificuldade</h4><div id="hardTopic">—</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="analysis-card" style="margin-top:14px"><h4>📚 Estudo orientado</h4><div id="studyAdvice">—</div></div>
+        <div class="comments" id="comments"><h3>Gabarito comentado</h3></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section card" style="margin-top:28px">
+    <div class="section-head"><div><h2>PARTE 3 · Como estudar depois do diagnóstico</h2><p>Use o resultado para organizar a próxima revisão.</p></div><span class="tag">Estratégia de estudo</span></div>
+    <div class="grid-3">
+      <div class="pill"><b>80% a 100% · consolidação</b><span class="muted">Revise mapas mentais, resolva questões de aplicação e mantenha o tema ativo.</span></div>
+      <div class="pill"><b>50% a 79% · reforço</b><span class="muted">Retome os conceitos principais, faça uma nova leitura e resolva questões do mesmo nível.</span></div>
+      <div class="pill"><b>0% a 49% · prioridade</b><span class="muted">Volte à revisão, reconstrua os conceitos com desenhos e exemplos e só depois avance para questões difíceis.</span></div>
+    </div>
+  </section>
+
+  <section class="section card">
+    <div class="section-head"><div><h2>Referência de continuidade</h2><p>Este material segue a lógica visual e a organização do material anterior do Curso Preparatório Professora Samanta.</p></div><span class="tag">Aula anterior</span></div>
+    <p><strong>Material de referência:</strong> <em>Diversidade Biológica · Vírus, reinos e a saúde humana</em>. A estrutura da aula anterior foi consultada para manter a identidade do material, a divisão em revisão, questionário e diagnóstico.</p>
+    <a class="footer-link" style="background:#151515" href="https://samanta-preparatorios.github.io/Aula-2-Ciencias/" target="_blank" rel="noopener">🔗 Abrir material da aula anterior</a>
+    <p class="note" style="margin-top:12px">Fonte visual do logotipo utilizada no material anterior: Curso Preparatório Professora Samanta.</p>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <p><strong>Professora Samanta — Cursos Preparatórios</strong></p>
+      <p>Ciências da Natureza · Conteúdo: 3. Citologia</p>
+      <p>Professor responsável: Joaquim Fragoso</p>
+    </div>
+    <div class="footer-links">
+      <a class="footer-link" href="https://wa.me/5581989106384" target="_blank" rel="noopener">💬 Entrar em contato via WhatsApp</a>
+      <a class="footer-link" href="https://samanta-preparatorios.github.io/Aula-2-Ciencias/" target="_blank" rel="noopener">📘 Aula anterior</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const questions = [...document.querySelectorAll('.q')];
+const answerLabels = {
+  1:'B',2:'C',3:'A',4:'A',5:'D',6:'B',7:'C',8:'B',9:'D',10:'A',11:'C',12:'B'
+};
+const comments = {
+  1:'Água e sais minerais são classificados, para fins escolares, como compostos inorgânicos. Glicose, lipídios, proteínas e ácidos nucleicos são exemplos de compostos orgânicos.',
+  2:'Os fosfolipídios têm uma região hidrofílica e regiões hidrofóbicas, característica essencial para a formação da bicamada da membrana.',
+  3:'Enzimas são proteínas que atuam como catalisadores biológicos. Elas aumentam a velocidade de determinadas reações ao diminuir a energia de ativação, sem serem consumidas como reagentes da reação.',
+  4:'A membrana plasmática funciona como uma barreira seletiva, regulando trocas entre o meio intracelular e o extracelular.',
+  5:'Em solução hipotônica, há menor concentração de solutos no meio externo do que dentro da célula. A água tende a entrar por osmose, podendo provocar inchaço em células animais.',
+  6:'Transportar íons contra o gradiente de concentração exige energia. Por isso, o processo é classificado como transporte ativo.',
+  7:'A mitocôndria participa da respiração celular e está associada à produção de grande parte do ATP utilizado pela célula.',
+  8:'Proteínas destinadas a determinadas rotas de secreção são sintetizadas por ribossomos associados ao retículo endoplasmático rugoso e seguem para processamento e organização no complexo de Golgi.',
+  9:'O complexo de Golgi modifica, organiza e direciona proteínas e lipídios, participando da formação de vesículas destinadas a diferentes locais da célula.',
+  10:'Na mitose, a divisão do núcleo e a distribuição do material genético produzem, em condições usuais, duas células-filhas com a mesma ploidia da célula inicial.',
+  11:'O crossing-over ocorre na prófase I da meiose, quando cromossomos homólogos emparelhados podem trocar segmentos de DNA.',
+  12:'A meiose contribui para a variabilidade genética por mecanismos como a recombinação entre homólogos e a distribuição independente dos cromossomos para as células resultantes.'
+};
+const topicNames = {bioquimica:'3.1 Bioquímica celular', envoltorios:'3.2 Envoltórios celulares', organelas:'3.3 Organelas celulares', divisao:'3.4 Divisão celular'};
+
+function updateAnswered(){
+  const answered = questions.filter(q=>q.querySelector('input:checked')).length;
+  document.getElementById('answeredCount').textContent = `${answered} de 12 respondidas`;
+}
+document.getElementById('quizForm').addEventListener('change', updateAnswered);
+
+function grade(){
+  const scores = {bioquimica:{correct:0,total:3}, envoltorios:{correct:0,total:3}, organelas:{correct:0,total:3}, divisao:{correct:0,total:3}};
+  let answered=0, correct=0;
+  questions.forEach((q,i)=>{
+    const selected = q.querySelector('input:checked');
+    if(selected) answered++;
+    const isCorrect = !!selected && selected.value === q.dataset.answer;
+    if(isCorrect){ correct++; scores[q.dataset.topic].correct++; }
+    q.style.borderColor = selected ? (isCorrect ? '#2f7d5b' : '#b84949') : '#6a5a48';
+  });
+  const total=12, wrong=total-correct, pct=Math.round(correct/total*100);
+  const pie = document.getElementById('pie');
+  const cut = Math.max(0,Math.min(100,pct));
+  pie.style.background = `conic-gradient(#2f7d5b 0 ${cut}%, #b84949 ${cut}% 100%)`;
+  document.getElementById('pieText').textContent = `${pct}%`;
+
+  const topicScores = document.getElementById('topicScores');
+  topicScores.innerHTML = Object.entries(scores).map(([key,s])=>{
+    const p=Math.round(s.correct/s.total*100);
+    return `<div class="topic-score"><div class="topic-line"><span>${topicNames[key]}</span><span>${s.correct}/${s.total} · ${p}%</span></div><div class="bar"><div style="width:${p}%"></div></div></div>`;
+  }).join('');
+
+  const min = Math.min(...Object.values(scores).map(s=>s.correct));
+  const max = Math.max(...Object.values(scores).map(s=>s.correct));
+  const easier = Object.entries(scores).filter(([,s])=>s.correct===max).map(([k])=>topicNames[k]);
+  const harder = Object.entries(scores).filter(([,s])=>s.correct===min).map(([k])=>topicNames[k]);
+  document.getElementById('easyTopic').innerHTML = `<strong>${easier.join(' · ')}</strong><br><span class="muted">${max}/3 acertos neste recorte.</span>`;
+  document.getElementById('hardTopic').innerHTML = `<strong>${harder.join(' · ')}</strong><br><span class="muted">${min}/3 acertos neste recorte.</span>`;
+
+  const adviceParts = Object.entries(scores).sort((a,b)=>(a[1].correct/a[1].total)-(b[1].correct/b[1].total)).map(([key,s])=>{
+    const p=Math.round(s.correct/s.total*100);
+    let text='';
+    if(p<50) text=`Priorize ${topicNames[key]}: releia a síntese, refaça os esquemas visuais e resolva pelo menos 5 novas questões antes de avançar.`;
+    else if(p<80) text=`Reforce ${topicNames[key]}: revise os pontos-chave e faça uma nova bateria de questões de dificuldade média.`;
+    else text=`Mantenha ${topicNames[key]} ativo com revisão rápida e questões de aplicação.`;
+    return `<li>${text}</li>`;
+  }).join('');
+  document.getElementById('studyAdvice').innerHTML = `<p><strong>${correct}/${total} acertos</strong> · ${wrong} erros · ${answered}/12 respondidas.</p><ul class="study-list">${adviceParts}</ul>`;
+
+  const commentsBox=document.getElementById('comments');
+  commentsBox.innerHTML='<h3>Gabarito comentado</h3>' + questions.map((q,i)=>{
+    const n=i+1, selected=q.querySelector('input:checked');
+    const ok=selected && selected.value===answerLabels[n];
+    const status = ok ? '<span class="score-ok">✓ Acertou</span>' : '<span class="score-bad">✗ Revise</span>';
+    return `<div class="comment"><strong>Questão ${n} · ${status}</strong><div><b>Resposta:</b> ${answerLabels[n]}</div><div><b>Comentário:</b> ${comments[n]}</div></div>`;
+  }).join('');
+  document.getElementById('result').style.display='block';
+  commentsBox.style.display='block';
+  document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+document.getElementById('gradeBtn').addEventListener('click', grade);
+document.getElementById('resetBtn').addEventListener('click',()=>{
+  document.getElementById('quizForm').reset();
+  questions.forEach(q=>q.style.borderColor='#323232');
+  document.getElementById('result').style.display='none';
+  updateAnswered();
+  window.scrollTo({top:document.getElementById('questionario').offsetTop-15,behavior:'smooth'});
+});
+document.getElementById('printBtn').addEventListener('click',()=>window.print());
+updateAnswered();
+</script>
+</body>
+</html>
